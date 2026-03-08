@@ -19,7 +19,7 @@
           font-thicken-strength = 100;
           font-family = "Source Code Pro";
 
-          theme = "Gruvbox Dark";
+          theme = "Everforest Dark Hard";
           maximize = true;
         }
         // lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {

@@ -12,12 +12,6 @@
       shell = "${pkgs.zsh}/bin/zsh";
       plugins = [
         {
-          plugin = pkgs.tmuxPlugins.gruvbox;
-          extraConfig = ''
-            set -g @tmux-gruvbox 'dark'
-          '';
-        }
-        {
           plugin = pkgs.tmuxPlugins.prefix-highlight;
           extraConfig = ''
             set -g @prefix_highlight_show_copy_mode 'on'
@@ -31,6 +25,13 @@
         }
       ];
       extraConfig = ''
+        set -g status-style 'fg=#d3c6aa,bg=#272e33'
+        set -g message-style 'fg=#d3c6aa,bg=#374145'
+        set -g pane-border-style 'fg=#414b50'
+        set -g pane-active-border-style 'fg=#83c092'
+        set -g window-status-current-style 'fg=#272e33,bg=#a7c080,bold'
+        set -g window-status-style 'fg=#9da9a0,bg=#272e33'
+
         set-hook -g after-new-session 'if-shell -F "#{==:#{window_panes},1}" "split-window -h -c \"#{pane_current_path}\"; select-pane -L; resize-pane -R 15"'
 
         bind '"' split-window -c "#{pane_current_path}"

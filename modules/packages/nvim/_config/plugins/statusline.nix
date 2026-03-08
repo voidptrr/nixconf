@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       options = {
-        theme = "gruvbox";
+        theme = "everforest";
         icons_enabled = false;
         section_separators = "";
         component_separators = "";

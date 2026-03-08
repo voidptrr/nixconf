@@ -4,7 +4,7 @@
       enable = true;
       settings = {
         plugin = [];
-        theme = "gruvbox";
+        theme = "everforest";
         provider = {};
       };
     };

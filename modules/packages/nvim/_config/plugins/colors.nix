@@ -1,11 +1,10 @@
 {
-  colorschemes.gruvbox = {
+  colorschemes.everforest = {
     enable = true;
     settings = {
-      italic = {
-        strings = false;
-      };
-      invert_selection = false;
+      transparent_background = 2;
+      disable_italic_comment = 1;
+      enable_italic = 0;
     };
   };
 }
