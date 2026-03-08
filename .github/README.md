@@ -37,7 +37,7 @@ Use the setup script:
 
 `setup.sh` will:
 
-- install Determinate Nix (if `nix` is missing)
+- on macOS, install Determinate Nix (if `nix` is missing)
 - set hostname to `personal`
   - macOS: `scutil --set HostName/LocalHostName/ComputerName`
   - Linux: `hostnamectl set-hostname` (if available)

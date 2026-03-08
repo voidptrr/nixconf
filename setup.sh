@@ -28,8 +28,11 @@ ensure_nix() {
 }
 
 setup_darwin() {
+  ensure_nix
+  need_cmd nix
   need_cmd scutil
   need_cmd sudo
+  need_cmd darwin-rebuild
 
   echo "Using host: $HOST"
   sudo scutil --set HostName "$HOST"
@@ -40,6 +43,8 @@ setup_darwin() {
 }
 
 setup_linux() {
+  need_cmd sudo
+
   if ! command -v nixos-rebuild >/dev/null 2>&1; then
     echo "nixos-rebuild not found; skipping system switch on Linux."
     return
@@ -54,9 +59,6 @@ setup_linux() {
 }
 
 main() {
-  ensure_nix
-  need_cmd nix
-
   case "$(uname -s)" in
     Darwin)
       setup_darwin
