@@ -8,6 +8,8 @@
       yaml
       rust
       c
+      zig
+      bash
       typescript
     ];
   };

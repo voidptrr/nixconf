@@ -56,6 +56,7 @@
 
       clangd = externalServer;
       ts_ls = externalServer;
+      zls = externalServer;
     };
   };
 
