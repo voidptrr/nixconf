@@ -19,7 +19,7 @@ Declarative system and user configuration using Nix flakes, nix-darwin, and Home
   - `modules/programs/internet/` (firefox)
   - `modules/programs/` (shared HM modules like git, opencode, sops)
 - `modules/nix/` -> `flake.nixModules.*`
-- `modules/packages/` -> package definitions (`perSystem.packages.*`)
+- `modules/packages/` -> package definitions (`perSystem.packages.*`, e.g. nvim and ptx)
 
 ## Key outputs
 
