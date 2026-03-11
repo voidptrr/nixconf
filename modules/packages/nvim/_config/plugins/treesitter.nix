@@ -9,7 +9,6 @@
 
       # Shell scripting
       bash
-      nu
 
       # Systems languages
       c
@@ -17,7 +16,9 @@
       zig
 
       # Web scripting
+      javascript
       typescript
+      tsx
     ];
   };
 }

@@ -2,7 +2,8 @@
   colorschemes.everforest = {
     enable = true;
     settings = {
-      transparent_background = 2;
+      background = "hard";
+      transparent_background = 1;
       disable_italic_comment = 1;
       enable_italic = 0;
     };

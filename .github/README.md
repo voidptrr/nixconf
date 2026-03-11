@@ -15,7 +15,7 @@ Declarative system and user configuration using Nix flakes, nix-darwin, and Home
 - `modules/darwin/` -> `flake.darwinModules.*`
 - `modules/hosts/<host>/` -> host composition + `flake.darwinConfigurations.*`
 - `modules/programs/<category>/` -> `flake.homeManagerModules.*`
-  - `modules/programs/terminal/` (ghostty, tmux, zsh, nu)
+  - `modules/programs/terminal/` (ghostty, tmux, zsh)
   - `modules/programs/internet/` (firefox)
   - `modules/programs/` (shared HM modules like git, opencode, sops)
 - `modules/nix/` -> `flake.nixModules.*`
@@ -57,7 +57,7 @@ sudo darwin-rebuild switch --flake ~/git/dotfiles#personal
 - Git signing secret wiring lives in `homeManagerModules.git` and uses `sops.secrets.git-signing-key.path`.
 - `nix develop` includes `sops`/`age` and exports `SOPS_AGE_KEY_FILE=~/sops/age/keys.txt`.
 
-Shell defaults shared between zsh and nushell live in `programs.shellProfile`.
+Shell defaults live in `programs.shellProfile`.
 
 ## Formatting
 

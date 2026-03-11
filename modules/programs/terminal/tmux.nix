@@ -9,7 +9,7 @@
       mouse = true;
       keyMode = "vi";
       escapeTime = 0;
-      shell = "${pkgs.nushell}/bin/nu";
+      shell = "${pkgs.zsh}/bin/zsh";
       extraConfig = ''
         set -g base-index 1
         set -g pane-base-index 1
@@ -17,8 +17,8 @@
         set -g status-style 'fg=#d3c6aa,bg=#272e33'
         set -g status-justify left
         set -g message-style 'fg=#d3c6aa,bg=#374145'
-        set -g pane-border-style 'fg=#414b50'
-        set -g pane-active-border-style 'fg=#83c092'
+        set -g pane-border-style 'fg=#4f5b58'
+        set -g pane-active-border-style 'fg=#d8a657'
         set -g window-status-current-style 'fg=#272e33,bg=#d8a657,bold'
         set -g window-status-style 'fg=#9da9a0,bg=#272e33'
         set -g window-status-separator ""

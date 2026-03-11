@@ -9,7 +9,9 @@
       package =
         if pkgs.stdenv.hostPlatform.isLinux
         then pkgs.ghostty
-        else pkgs.ghostty-bin;
+        else null;
+
+      enableZshIntegration = true;
 
       settings =
         {
@@ -19,6 +21,7 @@
           font-family = "Source Code Pro";
 
           theme = "Everforest Dark Hard";
+          background = "#292c33";
           maximize = true;
         }
         // lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
@@ -26,6 +29,7 @@
         }
         // lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
           macos-titlebar-style = "hidden";
+          macos-icon = "chalkboard";
         };
     };
   };

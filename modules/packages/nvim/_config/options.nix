@@ -25,6 +25,7 @@
     number = true;
     cursorline = true;
     numberwidth = 1;
+    signcolumn = "yes";
 
     splitbelow = true;
     splitright = true;

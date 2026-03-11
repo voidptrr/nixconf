@@ -7,10 +7,7 @@
     programs.zsh.enable = true;
 
     environment = {
-      shells = with pkgs; [
-        zsh
-        nushell
-      ];
+      shells = with pkgs; [zsh];
       pathsToLink = ["/share/zsh"];
       systemPackages = with pkgs; [man-pages-posix];
     };
@@ -21,7 +18,7 @@
       uid = 501;
       gid = 20;
       home = "/Users/${username}";
-      shell = pkgs.nushell;
+      shell = pkgs.zsh;
     };
 
     fonts.packages = with pkgs; [source-code-pro];
