@@ -28,6 +28,11 @@
         };
       };
 
+      git = {
+        name = "voidptrr";
+        email = "bruno.tommaso@protonmail.com";
+      };
+
       dock.persistentApps = [
         "/System/Applications/Music.app"
         "/Applications/Kakaotalk.app"
