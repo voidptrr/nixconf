@@ -17,9 +17,9 @@ Declarative system and user configuration using Nix flakes, nix-darwin, and Home
 - `modules/programs/<category>/` -> `flake.homeManagerModules.*`
   - `modules/programs/terminal/`
   - `modules/programs/internet/` (firefox)
-  - `modules/programs/` (shared HM modules like git, opencode, sops)
+  - `modules/programs/` (shared HM modules like opencode)
 - `modules/nix/` -> `flake.nixModules.*`
-- `modules/packages/` -> package definitions (`perSystem.packages.*`, e.g. nvim, ptx, ghostty, zsh, tmux)
+- `modules/packages/` -> package definitions (`perSystem.packages.*`, e.g. nvim, ptx, ghostty, zsh, tmux, git)
 
 ## Key outputs
 
@@ -49,12 +49,12 @@ Use the setup script:
 sudo darwin-rebuild switch --flake ~/git/dotfiles#personal
 ```
 
-## Secrets (Home Manager + sops-nix)
+## Secrets (nix-darwin + sops-nix)
 
-- `sops-nix` base config is in `homeManagerModules.sops`.
+- `sops-nix` base config is in `darwinModules.sops`.
 - The default encrypted file path is `secrets/secrets.yaml`.
 - The default age key file is `~/sops/age/keys.txt`.
-- Git signing secret wiring lives in `homeManagerModules.git` and uses `sops.secrets.git-signing-key.path`.
+- Git signing key material is provisioned to `~/.ssh/git_signing_ed25519` by `sops.secrets.git-signing-key`.
 - `nix develop` includes `sops`/`age` and exports `SOPS_AGE_KEY_FILE=~/sops/age/keys.txt`.
 
 ## Formatting

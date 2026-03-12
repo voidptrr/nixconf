@@ -1,6 +1,6 @@
 {...}: {
   perSystem = {pkgs, ...}: {
-    packages.zsh-wrapped = let
+    packages.zsh = let
       zshDotDir = toString (
         pkgs.linkFarm "zsh-merged-config" [
           {
@@ -15,7 +15,7 @@
       );
     in
       pkgs.symlinkJoin {
-        name = "zsh-wrapped";
+        name = "zsh";
         paths = [pkgs.zsh];
         buildInputs = [pkgs.makeWrapper];
         postBuild = ''

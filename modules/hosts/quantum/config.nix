@@ -1,44 +1,38 @@
 {self, ...}: {
-  flake.darwinModules.quantum = {pkgs, ...}: let
+  flake.hostModules.quantum = {pkgs, ...}: let
     ghosttyBin = "${self.packages.${pkgs.stdenv.hostPlatform.system}.ghostty}/bin/ghostty";
   in {
-    environment.systemPackages = with self.packages.${pkgs.stdenv.hostPlatform.system}; [
-      ghostty
-      zsh-wrapped
-      tmux
-      nvim
-      ptx
-    ];
+    darwin = {
+      wrappedPackages = [
+        "ghostty"
+        "zsh"
+        "tmux"
+        "nvim"
+        "ptx"
+        "git"
+      ];
 
-    services.skhd = {
-      enable = true;
-      skhdConfig = ''
-        cmd - g : ${ghosttyBin}
-        cmd - b : /usr/bin/open -a "Firefox"
-      '';
-    };
-
-    homebrewConfig = {
-      brews = ["mole"];
-      casks = ["firefox"];
-      masApps = {
-        KakaoTalk = 869223134;
+      skhd = {
+        enable = true;
+        config = ''
+          cmd - g : ${ghosttyBin}
+          cmd - b : /usr/bin/open -a "Firefox"
+        '';
       };
-    };
-    dockConfig.persistentApps = map (app: {inherit app;}) [
-      "/System/Applications/Music.app"
-      "/Applications/Kakaotalk.app"
-      "/Applications/Firefox.app"
-    ];
-    home-manager.sharedModules = [
-      {
-        programs = {
-          gitProfile = {
-            name = "voidptrr";
-            email = "bruno.tommaso@protonmail.com";
-          };
+
+      homebrew = {
+        brews = ["mole"];
+        casks = ["firefox"];
+        masApps = {
+          KakaoTalk = 869223134;
         };
-      }
-    ];
+      };
+
+      dock.persistentApps = [
+        "/System/Applications/Music.app"
+        "/Applications/Kakaotalk.app"
+        "/Applications/Firefox.app"
+      ];
+    };
   };
 }

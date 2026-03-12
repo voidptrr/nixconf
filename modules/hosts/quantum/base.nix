@@ -6,15 +6,7 @@
   system = "aarch64-darwin";
   username = "voidptr";
 
-  darwinStack = [
-    self.darwinModules.system
-    self.darwinModules.dock
-    self.darwinModules.homebrew
-    self.darwinModules.quantum
-    self.darwinModules.home-manager-entry
-    self.nixModules.base
-  ];
-
+  darwinModules = builtins.attrValues self.darwinModules;
   homeModules = builtins.attrValues self.homeManagerModules;
 in {
   flake.darwinConfigurations.personal = inputs.nix-darwin.lib.darwinSystem {
@@ -24,7 +16,11 @@ in {
       homeManagerModules = homeModules;
     };
     modules =
-      darwinStack
+      darwinModules
+      ++ [
+        self.hostModules.quantum
+        self.nixModules.base
+      ]
       ++ [
         inputs.nix-homebrew.darwinModules.nix-homebrew
         inputs.home-manager.darwinModules.home-manager

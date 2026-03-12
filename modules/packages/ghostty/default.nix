@@ -10,7 +10,7 @@
         "--maximize=true"
         "--working-directory=home"
         "--window-inherit-working-directory=false"
-        "--command=${self.packages.${pkgs.stdenv.hostPlatform.system}.zsh-wrapped}/bin/zsh"
+        "--command=${self.packages.${pkgs.stdenv.hostPlatform.system}.zsh}/bin/zsh"
       ]
       ++ pkgs.lib.optionals pkgs.stdenv.hostPlatform.isLinux [
         "--window-decoration=none"
@@ -23,7 +23,7 @@
     wrappedFlags = pkgs.lib.concatStringsSep " " ghosttyFlags;
   in {
     packages.ghostty = pkgs.symlinkJoin {
-      name = "ghostty-wrapped";
+      name = "ghostty";
       paths = [baseGhostty];
 
       buildInputs = [pkgs.makeWrapper];

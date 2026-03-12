@@ -1,7 +1,9 @@
 {lib, ...}: {
-  flake.darwinModules.dock = {config, ...}: {
-    options.dockConfig.persistentApps = lib.mkOption {
-      type = lib.types.listOf lib.types.attrs;
+  flake.darwinModules.dock = {config, ...}: let
+    cfg = config.darwin.dock;
+  in {
+    options.darwin.dock.persistentApps = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
       default = [];
     };
 
@@ -12,7 +14,7 @@
       minimize-to-application = true;
       mineffect = null;
       orientation = "bottom";
-      persistent-apps = config.dockConfig.persistentApps;
+      persistent-apps = map (app: {inherit app;}) cfg.persistentApps;
       show-recents = false;
       tilesize = 48;
     };

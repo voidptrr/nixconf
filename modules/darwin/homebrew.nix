@@ -4,9 +4,9 @@
     config,
     ...
   }: let
-    cfg = config.homebrewConfig;
+    cfg = config.darwin.homebrew;
   in {
-    options.homebrewConfig = {
+    options.darwin.homebrew = {
       brews = lib.mkOption {
         type = lib.types.listOf lib.types.str;
         default = [];

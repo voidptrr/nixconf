@@ -1,6 +1,12 @@
 {
   plugins.fugitive.enable = true;
 
+  extraConfigLua = ''
+    if vim.fn.executable("/run/current-system/sw/bin/git") == 1 then
+      vim.g.fugitive_git_executable = "/run/current-system/sw/bin/git"
+    end
+  '';
+
   keymaps = [
     {
       mode = "n";

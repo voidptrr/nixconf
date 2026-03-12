@@ -4,7 +4,7 @@
     pkgs,
     ...
   }: let
-    zshBin = "${self.packages.${pkgs.stdenv.hostPlatform.system}.zsh-wrapped}/bin/zsh";
+    zshBin = "${self.packages.${pkgs.stdenv.hostPlatform.system}.zsh}/bin/zsh";
 
     tmuxConfig = pkgs.writeText "tmux.conf" (
       lib.replaceStrings ["@ZSH_BIN@"] [zshBin] (builtins.readFile ./tmux.conf)

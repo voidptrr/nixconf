@@ -4,7 +4,7 @@
     username,
     ...
   }: let
-    wrappedZsh = self.packages.${pkgs.stdenv.hostPlatform.system}.zsh-wrapped;
+    wrappedZsh = self.packages.${pkgs.stdenv.hostPlatform.system}.zsh;
     wrappedZshBin = "${wrappedZsh}/bin/zsh";
   in {
     programs.zsh.enable = true;
