@@ -14,7 +14,7 @@
       enable = true;
       skhdConfig = ''
         cmd - g : ${ghosttyBin}
-        cmd - f : firefox
+        cmd - b : /usr/bin/open -a "Firefox"
       '';
     };
 
