@@ -15,11 +15,11 @@ Declarative system and user configuration using Nix flakes, nix-darwin, and Home
 - `modules/darwin/` -> `flake.darwinModules.*`
 - `modules/hosts/<host>/` -> host composition + `flake.darwinConfigurations.*`
 - `modules/programs/<category>/` -> `flake.homeManagerModules.*`
-  - `modules/programs/terminal/` (ghostty, tmux, zsh)
+  - `modules/programs/terminal/`
   - `modules/programs/internet/` (firefox)
   - `modules/programs/` (shared HM modules like git, opencode, sops)
 - `modules/nix/` -> `flake.nixModules.*`
-- `modules/packages/` -> package definitions (`perSystem.packages.*`, e.g. nvim and ptx)
+- `modules/packages/` -> package definitions (`perSystem.packages.*`, e.g. nvim, ptx, ghostty, zsh, tmux)
 
 ## Key outputs
 
@@ -56,8 +56,6 @@ sudo darwin-rebuild switch --flake ~/git/dotfiles#personal
 - The default age key file is `~/sops/age/keys.txt`.
 - Git signing secret wiring lives in `homeManagerModules.git` and uses `sops.secrets.git-signing-key.path`.
 - `nix develop` includes `sops`/`age` and exports `SOPS_AGE_KEY_FILE=~/sops/age/keys.txt`.
-
-Shell defaults live in `programs.shellProfile`.
 
 ## Formatting
 

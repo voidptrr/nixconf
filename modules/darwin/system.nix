@@ -1,13 +1,16 @@
-{...}: {
+{self, ...}: {
   flake.darwinModules.system = {
     pkgs,
     username,
     ...
-  }: {
+  }: let
+    wrappedZsh = self.packages.${pkgs.stdenv.hostPlatform.system}.zsh-wrapped;
+    wrappedZshBin = "${wrappedZsh}/bin/zsh";
+  in {
     programs.zsh.enable = true;
 
     environment = {
-      shells = with pkgs; [zsh];
+      shells = [wrappedZsh];
       pathsToLink = ["/share/zsh"];
       systemPackages = with pkgs; [man-pages-posix];
     };
@@ -18,7 +21,7 @@
       uid = 501;
       gid = 20;
       home = "/Users/${username}";
-      shell = pkgs.zsh;
+      shell = wrappedZshBin;
     };
 
     fonts.packages = with pkgs; [source-code-pro];

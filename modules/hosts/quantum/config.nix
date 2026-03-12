@@ -1,11 +1,24 @@
-{...}: {
-  flake.darwinModules.quantum = {...}: {
+{self, ...}: {
+  flake.darwinModules.quantum = {pkgs, ...}: let
+    ghosttyBin = "${self.packages.${pkgs.stdenv.hostPlatform.system}.ghostty}/bin/ghostty";
+  in {
+    environment.systemPackages = [
+      self.packages.${pkgs.stdenv.hostPlatform.system}.ghostty
+      self.packages.${pkgs.stdenv.hostPlatform.system}.zsh-wrapped
+      self.packages.${pkgs.stdenv.hostPlatform.system}.tmux
+      self.packages.${pkgs.stdenv.hostPlatform.system}.nvim
+    ];
+
+    services.skhd = {
+      enable = true;
+      skhdConfig = ''
+        cmd - g : ${ghosttyBin}
+      '';
+    };
+
     homebrewConfig = {
       brews = ["mole"];
-      casks = [
-        "firefox"
-        "ghostty"
-      ];
+      casks = ["firefox"];
       masApps = {
         KakaoTalk = 869223134;
       };
@@ -14,7 +27,6 @@
       "/System/Applications/Music.app"
       "/Applications/Kakaotalk.app"
       "/Applications/Firefox.app"
-      "/Applications/Ghostty.app"
     ];
     home-manager.sharedModules = [
       {
