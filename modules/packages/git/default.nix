@@ -1,17 +1,17 @@
 {...}: {
-  flake.darwinModules.git = {
+  flake.nixModules.git = {
     config,
     lib,
     pkgs,
     ...
   }: let
-    cfg = config.darwin.git;
+    cfg = config.shared.git;
 
     gitConfigFile = (pkgs.formats.gitIni {}).generate "gitconfig" {
       user = {
         name = cfg.name;
         email = cfg.email;
-        signingkey = config.darwin.sops.gitSigningKeyPath;
+        signingkey = cfg.signingKeyPath;
       };
       push.autoSetupRemote = true;
       init.defaultBranch = "main";
@@ -20,13 +20,18 @@
       commit.gpgSign = true;
     };
   in {
-    options.darwin.git = {
+    options.shared.git = {
       name = lib.mkOption {
         type = lib.types.nonEmptyStr;
       };
 
       email = lib.mkOption {
         type = lib.types.nonEmptyStr;
+      };
+
+      signingKeyPath = lib.mkOption {
+        type = lib.types.nonEmptyStr;
+        description = "Absolute path to the SSH signing key used by git.";
       };
     };
 

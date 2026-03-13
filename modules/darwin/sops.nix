@@ -20,11 +20,6 @@
         type = lib.types.str;
         default = "/Users/${username}/sops/age/keys.txt";
       };
-
-      gitSigningKeyPath = lib.mkOption {
-        type = lib.types.str;
-        default = "/Users/${username}/.ssh/git_signing_ed25519";
-      };
     };
 
     config.sops = {
@@ -33,12 +28,6 @@
       age = {
         keyFile = config.darwin.sops.ageKeyFile;
         sshKeyPaths = lib.mkForce [];
-      };
-
-      secrets.git-signing-key = {
-        path = config.darwin.sops.gitSigningKeyPath;
-        owner = username;
-        mode = "0400";
       };
     };
   };

@@ -49,6 +49,11 @@
           default = {};
           description = "Registry of shared Nix modules.";
         };
+        flake.hostModules = lib.mkOption {
+          type = lib.types.attrsOf lib.types.raw;
+          default = {};
+          description = "Registry of host-specific modules.";
+        };
       };
 
       config = {

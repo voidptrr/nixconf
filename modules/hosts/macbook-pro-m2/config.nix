@@ -1,9 +1,11 @@
 {self, ...}: {
-  flake.hostModules.quantum = {pkgs, ...}: let
+  flake.hostModules.macbook-pro-m2 = {pkgs, config, ...}: let
     ghosttyBin = "${self.packages.${pkgs.stdenv.hostPlatform.system}.ghostty}/bin/ghostty";
   in {
-    darwin = {
-      wrappedPackages = [
+    imports = [self.hostModules.macbook-pro-m2-secrets];
+
+    shared = {
+      packages = [
         "ghostty"
         "zsh"
         "tmux"
@@ -12,6 +14,14 @@
         "git"
       ];
 
+      git = {
+        name = "voidptrr";
+        email = "bruno.tommaso@protonmail.com";
+        signingKeyPath = config.sops.secrets.git-signing-key.path; 
+      };
+    };
+
+    darwin = {
       skhd = {
         enable = true;
         config = ''
@@ -26,11 +36,6 @@
         masApps = {
           KakaoTalk = 869223134;
         };
-      };
-
-      git = {
-        name = "voidptrr";
-        email = "bruno.tommaso@protonmail.com";
       };
 
       dock.persistentApps = [
