@@ -7,6 +7,7 @@
 
     ghosttyFlags =
       [
+        "--font-family=Source Code Pro"
         "--maximize=true"
         "--working-directory=home"
         "--window-inherit-working-directory=false"

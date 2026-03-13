@@ -16,6 +16,7 @@
         "nvim"
         "ptx"
         "git"
+        "opencode"
       ];
 
       git = {

@@ -87,6 +87,5 @@
         };
       };
     };
-    home.sessionVariables.BROWSER = "firefox";
   };
 }
