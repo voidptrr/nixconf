@@ -12,7 +12,8 @@
       settings = {
         command = "${pkgs.zsh}/bin/zsh -l";
         font-family = "JetBrains Mono";
-        theme = "Black Metal (Gorgoroth)";
+        theme = "Everforest Dark Hard";
+        background = "#101d23";
         font-size = 12;
         background-opacity = 0.95;
         background-blur-radius = 20;

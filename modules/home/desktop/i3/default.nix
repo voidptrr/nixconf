@@ -6,6 +6,7 @@
   ...
 }: let
   i3 = osConfig.my.nixos.desktop.i3;
+  wallpaper = ../../../../assets/wallpaper-space1;
   font = {
     names = ["JetBrains Mono"];
     size = "13";
@@ -32,6 +33,32 @@ in {
     }
 
     (lib.mkIf (config.my.home.desktop.i3.enable && i3.enable) {
+      services.picom = {
+        enable = true;
+        backend = "glx";
+        vSync = true;
+        settings = {
+          blur-background = true;
+          blur-background-fixed = true;
+          blur-method = "dual_kawase";
+          blur-strength = 5;
+        };
+      };
+
+      systemd.user.services.xwallpaper = {
+        Unit = {
+          Description = "Set X11 wallpaper";
+          PartOf = ["graphical-session.target"];
+          Before = ["picom.service"];
+        };
+        Service = {
+          Type = "oneshot";
+          ExecStart = "${lib.getExe pkgs.xwallpaper} --zoom ${wallpaper}";
+          RemainAfterExit = true;
+        };
+        Install.WantedBy = ["graphical-session.target"];
+      };
+
       xsession.windowManager.i3 = {
         enable = true;
         config = {
