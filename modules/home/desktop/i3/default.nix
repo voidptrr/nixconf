@@ -77,7 +77,7 @@ in {
             commands = [
               {
                 criteria.title = "coding";
-                command = "floating enable, resize set 1150 900, move position center";
+                command = "floating enable, resize set 1200 900, move position center";
               }
             ];
           };
@@ -165,7 +165,7 @@ in {
             "Mod4+Return" = "exec --no-startup-id ghostty";
             "Mod4+m" = "exec --no-startup-id rofi -show drun -normal-window";
             "Mod4+f" = "exec --no-startup-id firefox";
-            "Mod4+c" = "exec --no-startup-id ghostty --title coding";
+            "Mod4+c" = "exec --no-startup-id ghostty --title=coding";
             "Mod4+Shift+q" = "kill";
 
             "Mod4+h" = "focus left";
