@@ -165,6 +165,7 @@ in {
             "Mod4+Return" = "exec --no-startup-id ghostty";
             "Mod4+m" = "exec --no-startup-id rofi -show drun -normal-window";
             "Mod4+f" = "exec --no-startup-id firefox";
+            "Mod4+Shift+f" = "floating toggle";
             "Mod4+c" = "exec --no-startup-id ghostty --title=coding";
             "Mod4+Shift+q" = "kill";
 
