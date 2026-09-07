@@ -41,7 +41,7 @@ in {
           blur-background = true;
           blur-background-fixed = true;
           blur-method = "dual_kawase";
-          blur-strength = 5;
+          blur-strength = 4;
         };
       };
 

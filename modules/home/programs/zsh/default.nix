@@ -8,10 +8,6 @@
   options.my.home.programs.zsh.enable = lib.mkEnableOption "zsh";
 
   config = lib.mkIf config.my.home.programs.zsh.enable {
-    home.packages = [
-      pkgs.stylua
-    ];
-
     programs.zsh = {
       enable = true;
 
@@ -20,7 +16,7 @@
         vim = "nvim";
         ll = "ls -la";
         nd = "nix develop -c \"$SHELL\"";
-        rebuild = "sudo nixos-rebuild switch --flake ~/git/gwejeok#${hostname}";
+        rebuild = ''sudo nixos-rebuild switch --flake "$(git rev-parse --show-toplevel)#${hostname}"'';
       };
 
       sessionVariables = {
