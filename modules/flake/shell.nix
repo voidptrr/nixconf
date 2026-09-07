@@ -1,7 +1,6 @@
 {...}: {
   perSystem = {
     config,
-    inputs',
     pkgs,
     ...
   }: {
