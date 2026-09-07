@@ -6,7 +6,7 @@
   ...
 }: let
   i3 = osConfig.my.nixos.desktop.i3;
-  wallpaper = ../../../../assets/wallpaper-space1;
+  wallpaper = ../../../../assets/wallpaper-space1.png;
   font = {
     names = ["JetBrains Mono"];
     size = "13";
